@@ -86,7 +86,7 @@
                   <br />
                   <v-chip
                     v-for="gi in pokemon.game_indices"
-                    :key="gi.game_index"
+                    :key="gi.version.name"
                     class="mr-1 mt-1"
                     >{{ gi.version.name }}</v-chip
                   >
@@ -145,10 +145,10 @@
                   <h5>Stats</h5>
                   <br />
                   <v-chip
-                    v-for="item in pokemon.stats"
-                    :key="item.stat.name"
+                    v-for="stat in pokemon.stats"
+                    :key="stat.stat.name"
                     class="mr-1 mt-1"
-                    >{{ item.stat.name }}: {{ item.base_stat }}</v-chip
+                    >{{ stat.stat.name }}: {{ stat.base_stat }}</v-chip
                   >
                 </v-card>
               </v-col>
@@ -157,10 +157,10 @@
                   <h5>Types</h5>
                   <br />
                   <v-chip
-                    v-for="item in pokemon.types"
-                    :key="item.type.name"
+                    v-for="type in pokemon.types"
+                    :key="type.type.name"
                     class="mr-1 mt-1"
-                    >{{ item.type.name }}: {{ item.slot }}</v-chip
+                    >{{ type.type.name }}: {{ type.slot }}</v-chip
                   >
                 </v-card>
               </v-col>
