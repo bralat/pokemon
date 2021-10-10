@@ -27,9 +27,13 @@ export default {
       }
     },
     previous() {
-      const offset = this.query.offset - this.query.limit;
-      if (offset >= 0) {
-        this.updateOffset(offset);
+      if (this.query.limit > this.query.offset) {
+        this.updateOffset(0);
+      } else {
+        const offset = this.query.offset - this.query.limit;
+        if (offset >= 0) {
+          this.updateOffset(offset);
+        }
       }
     },
   },
@@ -44,7 +48,7 @@ export default {
       if (!this.query.offset) {
         return 1;
       }
-      return Math.floor(this.query.offset / this.query.limit + 1);
+      return Math.ceil(this.query.offset / this.query.limit + 1);
     },
     pages_count() {
       return Math.ceil(this.pagination.count / this.query.limit) || 1;
