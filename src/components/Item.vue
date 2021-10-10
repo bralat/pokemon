@@ -17,6 +17,23 @@
     <v-card-title>
       {{item.name}}
     </v-card-title>
+    <v-card-text>
+      <v-row>
+        <v-col cols="12" lg="6" class="pt-0 pb-0">
+          Height: {{item.height}}
+        </v-col>
+        <v-col cols="12" lg="6" class="pt-0 pb-0">
+          weight: {{item.weight}}
+        </v-col>
+        <v-col>
+          Abilities:<br>
+          <v-chip
+            v-for="ab in abilities"
+            :key="ab"
+            class="mr-1 mt-1 abilities">{{ab}}</v-chip>
+        </v-col>
+      </v-row>
+    </v-card-text>
   </v-card>
 </template>
 
@@ -43,6 +60,14 @@ export default {
     itemLink() {
       return `details/${this.item.name}`;
     },
+  },
+  methods: {
+    fetchDetails() {
+      this.$store.dispatch('getPokemonDetails', this.item.name);
+    },
+  },
+  mounted() {
+    this.fetchDetails();
   },
 };
 </script>

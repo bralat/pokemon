@@ -23,6 +23,9 @@ export default {
     const keys = Object.keys(data);
     commit('setPokemons', { keys, data });
   },
+  setPokemonDetails({ commit }, prop) {
+    commit('setPokemonDetails', prop);
+  },
   setPagination({ commit }, prop) {
     commit('setPagination', prop);
   },
@@ -43,5 +46,10 @@ export default {
 
     dispatch('setPokemons', results);
     dispatch('setPagination', { count, next, previous });
+  },
+  async getPokemonDetails({ state, dispatch }, prop) {
+    const details = (await HTTP.get(`/${prop}`, { params: state.query })).data;
+
+    dispatch('setPokemonDetails', details);
   },
 };
