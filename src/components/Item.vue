@@ -1,6 +1,6 @@
 <template>
   <v-card :to="itemLink" class="card-size">
-    <v-img :src="image" class="image img-size">
+    <v-img :src="image" class="image img-size" :alt="imageAlt">
       <template v-slot:placeholder>
         <v-row
           class="fill-height ma-0"
@@ -49,6 +49,9 @@ export default {
     image() {
       const img = this.item?.sprites?.other['official-artwork']?.front_default;
       return img;
+    },
+    imageAlt() {
+      return `default image for ${this.item.name}`;
     },
     abilities() {
       if (!('abilities' in this.item)) {

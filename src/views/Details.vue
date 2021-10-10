@@ -11,7 +11,7 @@
         <v-row justify="center">
           <v-col cols="12" sm="8" md="6">
             <v-card>
-              <v-img class="image" :src="image"></v-img>
+              <v-img class="image" :src="image" :alt="imageAlt"></v-img>
             </v-card>
           </v-col>
           <v-col cols="12" md="6">
@@ -186,6 +186,9 @@ export default {
     pokemon: {},
   }),
   computed: {
+    imageAlt() {
+      return `default image for ${this.pokemon.name}`;
+    },
     abilities() {
       if (!('abilities' in this.pokemon)) {
         return [];
