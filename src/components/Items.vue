@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-row justify="space-between" class="mt-5 max-width">
+    <v-row justify="start" class="mt-5 max-width">
       <v-col
         v-for="item in pokemons"
         :key="item.name"
-        cols="12" xs="6" sm="4" md="3">
+        cols="12" xs="6" sm="4" md="3" xl="2">
         <Item :item="item"/>
       </v-col>
     </v-row>
