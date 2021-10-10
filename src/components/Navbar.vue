@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-row justify="space-between" class="mt-5 max-width">
-      <v-btn depressed color="primary" @click="previous" class="btn-previous">
+      <v-btn depressed color="primary" @click="previous" class="btn-previous ml-3">
         <v-icon>mdi-chevron-left</v-icon>
         Previous
       </v-btn>
       <div class="mt-2">{{ page_number }}/{{ pages_count }}</div>
-      <v-btn depressed color="primary" @click="next" class="btn-next">
+      <v-btn depressed color="primary" @click="next" class="btn-next mr-3">
         Next
         <v-icon> mdi-chevron-right </v-icon>
       </v-btn>
