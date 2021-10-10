@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import pokemons from './fixtures/pokemons';
 import localState from '../src/store/state';
+import getters from '../src/store/getters';
 
 const localVue = createLocalVue();
 localVue.use(vuex);
@@ -26,6 +27,7 @@ export const preTesting = ({
   // mock dependencies
   const store = new vuex.Store({
     actions,
+    getters,
     state: state2,
   });
   const vuetify = new Vuetify();
