@@ -18,6 +18,7 @@
 export default {
   methods: {
     updateOffset(offset) {
+      window.scrollTo(0, 0);
       this.$store.dispatch('setQuery', { offset });
     },
     next() {
