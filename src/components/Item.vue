@@ -1,0 +1,58 @@
+<template>
+  <v-card :to="itemLink" class="card-size">
+    <v-img :src="image" class="image img-size">
+      <template v-slot:placeholder>
+        <v-row
+          class="fill-height ma-0"
+          align="center"
+          justify="center"
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-1"
+          ></v-progress-circular>
+        </v-row>
+      </template>
+    </v-img>
+    <v-card-title>
+      {{item.name}}
+    </v-card-title>
+  </v-card>
+</template>
+
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  computed: {
+    image() {
+      const img = this.item?.sprites?.other['official-artwork']?.front_default;
+      return img;
+    },
+    abilities() {
+      if (!('abilities' in this.item)) {
+        return [];
+      }
+
+      return this.item.abilities.map((item) => item.ability.name);
+    },
+    itemLink() {
+      return `details/${this.item.name}`;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.card-size {
+  min-height: 426px;
+}
+
+.img-size {
+  min-height: 266px;
+}
+</style>
