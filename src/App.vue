@@ -10,9 +10,20 @@
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  computed: {
+    query() {
+      return this.$store.state.query;
+    },
+  },
+  watch: {
+    query: {
+      deep: true,
+      handler(val) {
+        this.$router.replace({
+          query: Object.assign(this.query, val),
+        });
+      },
+    },
+  },
 };
 </script>
